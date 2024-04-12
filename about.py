@@ -8,7 +8,7 @@ def about():
     with st.expander("Read More"):
         st.write("This application based MIT license and is open-sourced on GitHub.")
         st.write("这个应用程序基于MIT许可证，并在GitHub上开源。")
-        st.write("GitHub: https://github.com/12306ylg/py-Http.server-GUI")
+        st.write("GitHub: https://github.com/12306ylg/streamlit-blog/")
     st.write("---")
 def preview(type,text):
     st.write("## Preview")
