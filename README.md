@@ -1,0 +1,19 @@
+This is a blog application based on Streamlit 
+## Deploy
+```shell
+git clone https://github.com/12306ylg/streamlit-blog.git/
+cd streamlit-blog
+python -m streamlit run main.py
+```
+## Config
+The configs are in `config.py`
+
+* icon
+  
+  your avatar path (https:// or local path)
+* name
+
+  your name here
+* password
+
+  your password for the admin
