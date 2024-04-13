@@ -25,7 +25,7 @@ def show_content(item: str):
         st.video(content.name) if st.checkbox(f"播放{content.name}") else None
     elif content.name.endswith(".mp3"):
         st.audio(content.name) if st.checkbox(f"播放{content.name}") else None
-    st.button("关闭",on_click=close)
+    st.button("Close",on_click=close)
 
 def head():
     st.header("HomePage!")
