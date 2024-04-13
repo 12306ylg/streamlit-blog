@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 import config
+import shutil
 def about():
     st.header("About")
     st.write("This is a simple blog application built using Python and Streamlit.")
@@ -19,7 +20,7 @@ def preview(type,text):
      elif type == "txt":
         st.write(text)
      elif type == "html":
-        st.markdown(f'<div style="{text}"></div>', unsafe_allow_html=True)
+        st.markdown(text, unsafe_allow_html=True)
      elif type == "python":
         st.warning("NOT SAFE FOR EXECUTION")
         st.code(text, language="python")
@@ -28,7 +29,15 @@ def post(title,type,text):
     open(f"./blog/{title}.{type}", "w").write(text)
     st.success("Post added successfully")
 def delete(title):
-    os.remove(f"./blog/{title}")
+    def rmdir():
+        shutil.rmtree(f"./blog/{title}")
+        st.success("Directory deleted successfully")
+    path=f"./blog/{title}"
+    if os.path.isfile(path):os.remove(path);st.success("Post deleted successfully")
+    elif os.path.isdir(path):
+        st.warning("This is a directory, press the button below to delete it or open your file manager to delete posts in this directory.")
+        st.button("Delete ALL Post on this directory",on_click=rmdir)
+    else:raise Exception("Huhh???")
 def admin(password:str):
     if password == config.password:
         st.write("Admin Page")
