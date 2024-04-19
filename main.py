@@ -1,6 +1,7 @@
 import streamlit as st
 import home
 import about
+import admin
 from config import is_in_streamlitcloud
 if not st.session_state.get("is_show", False):
     if is_in_streamlitcloud:st.info("IS IN STREAMLIT CLOUD? OR THE CONFIG \"is_in_streamlitcloud\" IS True", icon="🧪")
@@ -15,4 +16,4 @@ if not st.session_state.get("is_show", False):
     with tabs[2]:
         pas=st.text_input("Enter admin password:", type="password")
         if pas and not st.session_state.get("is_show", False):
-            about.admin(pas)
+            admin.admin(pas)
