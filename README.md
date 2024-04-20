@@ -21,3 +21,6 @@ The configs are in `config.py`
 * password
 
   your password for the admin
+* language
+  
+  `zh-cn` or `en-us` (default is `en-us`)

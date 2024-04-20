@@ -2,9 +2,9 @@ import streamlit as st
 import home
 import about
 import admin
-from config import is_in_streamlitcloud,lang
+from config import demo_mode,lang
 if not st.session_state.get("is_show", False):
-    if is_in_streamlitcloud:st.info("IS IN STREAMLIT CLOUD? OR THE CONFIG \"is_in_streamlitcloud\" IS True", icon="🧪")
+    if demo_mode:st.info("IS DEMO OR THE CONFIG \"demo_mode\" is True", icon="🧪")
     st.title("Streamlit Blog(example)")
     st.button("Refresh")
     tabs = st.tabs(["home", "about","admin"])

@@ -52,7 +52,7 @@ def body():
         if os.path.isfile(f"./blog/{item.split('.')[0]}.gif") else None
         #============================================
         if image:st.image(f"./blog/{item}",width=200)
-        st.markdown(f"** {"".join(open(f"./blog/{item}",errors="ignore").read(100).splitlines()[:1])[:100]}…… **")
+        st.markdown(f"**{open(f"./blog/{item}",encoding="utf-8",errors="ignore").read(100)}……**")
         st.button("Read", on_click=show_content, args=(item,), key=item)
     show(file)
     for item in dirs:

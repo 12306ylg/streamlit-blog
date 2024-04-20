@@ -17,8 +17,10 @@ def preview(type,text):
         st.warning(lang["msg"][1][1])
         st.code(text, language="python")
 def post(title,type,text):
+    if config.demo_mode:return st.error(lang["msg"][2][1])
     type="py" if type=="python" else type
     open(f"./blog/{title}.{type}", "w").write(text)
+    open("./.index","a").write(f"\n{title}.{type}")
     st.success(lang["msg"][0][0])
 def delete(title):
     def rmdir():
@@ -30,14 +32,18 @@ def delete(title):
         st.warning(lang["msg"][1][0])
         st.button("Delete ALL Post on this directory",on_click=rmdir)
     else:raise Exception("Huhh???")
+    build_PostIndex() #rebuild index
 def build_PostIndex():
-    ignore=set(open("./.index_ignore","r").read().splitlines())
-    index=set([f for f in os.listdir("./blog")
-            if f not in ignore if f!=""])
-    open("./.index","w").writelines(index)
+    print("Building Index...")
+    ignore=open("./.index_ignore","r").read().splitlines()
+    index=[f for f in os.listdir("./blog")
+            if f not in ignore if f!=""]
+    open("./.index","w").write("\n".join(index))
+    print("Done!",index)
     return index
 def PostIndex():
-    return set(open("./.index","r").read().splitlines() if os.path.isfile("./.index") else build_PostIndex())
+    if os.path.isfile("./.index"):return open("./.index","r").read().splitlines() 
+    return build_PostIndex()
 def admin(password:str):
     if password == config.password:
         st.write(lang["header"])
@@ -52,6 +58,8 @@ def admin(password:str):
         elif choice == lang["act"][1][1]:
             title=st.selectbox(lang["editor"][0],os.listdir("./blog"),key="title")
             st.button(lang["act"][1][1],on_click=delete,args=(title,))
+        elif choice == lang["act"][1][2]:
+            st.button(lang["act"][1][2],on_click=build_PostIndex)
     else:
         st.error(lang["msg"][2][0])
         
