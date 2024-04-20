@@ -2,7 +2,7 @@ import streamlit as st
 import home
 import about
 import admin
-from config import is_in_streamlitcloud
+from config import is_in_streamlitcloud,lang
 if not st.session_state.get("is_show", False):
     if is_in_streamlitcloud:st.info("IS IN STREAMLIT CLOUD? OR THE CONFIG \"is_in_streamlitcloud\" IS True", icon="🧪")
     st.title("Streamlit Blog(example)")

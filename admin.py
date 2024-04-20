@@ -30,6 +30,14 @@ def delete(title):
         st.warning(lang["msg"][1][0])
         st.button("Delete ALL Post on this directory",on_click=rmdir)
     else:raise Exception("Huhh???")
+def build_PostIndex():
+    ignore=set(open("./.index_ignore","r").read().splitlines())
+    index=set([f for f in os.listdir("./blog")
+            if f not in ignore if f!=""])
+    open("./.index","w").writelines(index)
+    return index
+def PostIndex():
+    return set(open("./.index","r").read().splitlines() if os.path.isfile("./.index") else build_PostIndex())
 def admin(password:str):
     if password == config.password:
         st.write(lang["header"])
