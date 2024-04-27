@@ -10,20 +10,22 @@ def show_content(item: str):
     st.image(config.icon,width=50)
     st.write(config.name,unsafe_allow_html=True)
     st.markdown("---")
-    content = open("./blog/" + item, "r", encoding="utf-8")
-    if content.name.endswith(".py"):
-        exec(content.read())
-    elif content.name.endswith(".md"):
-        st.markdown(content.read())
-    elif content.name.endswith(".txt"):
-        st.text(content.read())
-    elif content.name.endswith(".html"):
-        st.write(content.read(), unsafe_allow_html=True)
-    elif content.name.endswith(".mp4"):
-        st.video(content.name) if st.checkbox(f"Play{content.name}") else None
-    elif content.name.endswith(".mp3"):
-        st.audio(content.name) if st.checkbox(f"Play{content.name}") else None
-    cls=lambda: close();content.close()
+    content_f = open("./blog/" + item, "r", encoding="utf-8")
+    content = content_f.read()
+    st.markdown(f":gray[total:{len(content)}]")
+    if content_f.name.endswith(".py"):
+        exec(content)
+    elif content_f.name.endswith(".md"):
+        st.markdown(content)
+    elif content_f.name.endswith(".txt"):
+        st.text(content)
+    elif content_f.name.endswith(".html"):
+        st.write(content, unsafe_allow_html=True)
+    elif content_f.name.endswith(".mp4"):
+        st.video(content_f.name) if st.checkbox(f"Play{content.name}") else None
+    elif content_f.name.endswith(".mp3"):
+        st.audio(content_f.name) if st.checkbox(f"Play{content.name}") else None
+    cls=lambda: close();content_f.close()
     st.button("Close",on_click=cls)
 
 def head():
