@@ -12,7 +12,7 @@ def show_content(item: str):
     st.markdown("---")
     content = open("./blog/" + item, "r", encoding="utf-8")
     if content.name.endswith(".py"):
-        exec(content.read()) if content.read().startswith("#!blog") else None
+        exec(content.read())
     elif content.name.endswith(".md"):
         st.markdown(content.read())
     elif content.name.endswith(".txt"):
@@ -23,10 +23,10 @@ def show_content(item: str):
         st.video(content.name) if st.checkbox(f"Play{content.name}") else None
     elif content.name.endswith(".mp3"):
         st.audio(content.name) if st.checkbox(f"Play{content.name}") else None
-    st.button("Close",on_click=close)
+    cls=lambda: close();content.close()
+    st.button("Close",on_click=cls)
 
 def head():
-    """"""
     st.header("HomePage!")
     st.info(time.ctime())
     st.info("page is in home.py")
