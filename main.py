@@ -3,7 +3,7 @@ import home
 import about
 import admin
 from config import demo_mode,lang
-if not st.session_state.get("is_show", False):
+if not st.session_state.get("is_show"):
     if demo_mode:st.info("IS DEMO OR THE CONFIG \"demo_mode\" is True", icon="🧪")
     st.title("Streamlit Blog(example)")
     st.button("Refresh")
@@ -17,3 +17,7 @@ if not st.session_state.get("is_show", False):
         pas=st.text_input("Enter admin password:", type="password")
         if pas and not st.session_state.get("is_show", False):
             admin.admin(pas)
+if st.session_state.get("content") and st.session_state.get("is_show"):
+    home.show_content(st.session_state["content"])
+    home.Comment.comment(st.session_state["content"])
+    home.Comment.show_comment(st.session_state["content"])
