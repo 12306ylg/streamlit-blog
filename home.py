@@ -24,9 +24,9 @@ def show_content(item: str):
     elif content_f.name.endswith(".html"):
         st.write(content, unsafe_allow_html=True)
     elif content_f.name.endswith(".mp4"):
-        st.video(content_f.name) if st.checkbox(f"Play{content.name}") else None
+        st.video(content_f.name) if st.checkbox(f"Play{content_f.name}") else None
     elif content_f.name.endswith(".mp3"):
-        st.audio(content_f.name) if st.checkbox(f"Play{content.name}") else None
+        st.audio(content_f.name) if st.checkbox(f"Play{content_f.name}") else None
     cls=lambda: close();content_f.close()
     
     st.button("Close",on_click=cls)
