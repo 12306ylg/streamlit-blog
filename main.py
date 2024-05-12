@@ -18,6 +18,6 @@ if not st.session_state.get("is_show"):
         if pas and not st.session_state.get("is_show", False):
             admin.admin(pas)
 if st.session_state.get("content") and st.session_state.get("is_show"):
-    home.show_content(st.session_state["content"])
-    home.Comment.comment(st.session_state["content"])
-    home.Comment.show_comment(st.session_state["content"])
+    home.show_content(st.session_state["content"]) # type: ignore
+    home.Comment.comment(st.session_state["content"]) # type: ignore
+    home.Comment.show_comment(st.session_state["content"]) # type: ignore
