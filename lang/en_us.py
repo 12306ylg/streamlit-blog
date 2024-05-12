@@ -8,6 +8,6 @@ admin={"header":"Admin Page",
        "editor":("Title","Type","Content","Preview"),
        "msg":(["Post added successfully","Directory deleted successfully","Post deleted successfully"],
               ["This is a directory, press the button below to delete it or open your file manager to delete posts in this directory.","NOT SAFE FOR EXECUTION"],
-              ["Incorrect password","CANNOT POST on streamlit cloud"])
+              ["Incorrect password","CANNOT Post on streamlit cloud"])
               
        }
