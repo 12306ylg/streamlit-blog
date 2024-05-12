@@ -1,3 +1,8 @@
+main={"demo_tip":"IS DEMO OR THE CONFIG \"demo_mode\" is True",
+      "title":"Streamlit Blog(example)",
+      "rfsh":"刷新",
+      "tabs":["首页","关于","管理"],
+}
 about={"header":"About",
        "description":"这是一个使用Python和Streamlit构建的简单博客应用程序。",
        "read_more":"Read More",

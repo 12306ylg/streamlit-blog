@@ -15,6 +15,7 @@ def show_content(item: str):
     content_f = open(f"./blog/{item}", "r", encoding="utf-8")
     content = content_f.read()
     st.markdown(f":gray[total:{len(content)}]")
+    # Show content
     if content_f.name.endswith(".py"):
         exec(content)
     elif content_f.name.endswith(".md"):
@@ -29,7 +30,7 @@ def show_content(item: str):
         st.audio(content_f.name) if st.checkbox(f"Play{content_f.name}") else None
     cls=lambda: close();content_f.close()
     
-    st.button("Close",on_click=cls)
+    st.button("Close","cls_What_happend_of_the_button",on_click=cls)
 def setsssts(key,value):st.session_state[key]=value
 class Comment:
     def comment(content:str):
@@ -42,7 +43,7 @@ class Comment:
                 st.session_state["commeted"] = True
                 threading.Timer(10, setsssts, args=("commeted",False)).start()
             with open(f"./blog/{content}.comment","a+",encoding="utf-8") as f:
-                if f.read().count(comment) >5:st.error("Too many same comments!")
+                if f.read().split("\x1f").count(comment) >5:st.error("Too many same comments!")
                 else:f.write(f"{time.ctime()}| {name} {email}:{comment}\x1f")
         st.text_area("Comment here",key="comment")
         st.text_input("Name",key="name")

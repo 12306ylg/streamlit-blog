@@ -3,11 +3,12 @@ import home
 import about
 import admin
 from config import demo_mode,lang
+lang=lang.main
 if not st.session_state.get("is_show"):
-    if demo_mode:st.info("IS DEMO OR THE CONFIG \"demo_mode\" is True", icon="🧪")
-    st.title("Streamlit Blog(example)")
-    st.button("Refresh")
-    tabs = st.tabs(["home", "about","admin"])
+    if demo_mode:st.info(lang["demo_tip"], icon="🧪")
+    st.title(lang["title"])
+    st.button(lang["rfsh"])
+    tabs = st.tabs(lang["tabs"])
     with tabs[0]:
         home.head()
         home.body()
