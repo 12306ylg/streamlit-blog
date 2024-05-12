@@ -1,4 +1,4 @@
-import lang.templete
-def choose_lang(lang:str)->lang.templete:
+from types import ModuleType
+def choose_lang(lang:str)->ModuleType:
         import importlib
         return importlib.import_module(f"lang.{lang.replace('-', '_')}")
