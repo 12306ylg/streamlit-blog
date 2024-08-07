@@ -14,7 +14,7 @@ The configs are in `config.py`
 
 * icon
   
-  your avatar path (https:// or local path)
+  your avatar or blog icon path (https:// or local path)
 * name
 
   your name here
