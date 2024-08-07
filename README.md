@@ -20,7 +20,7 @@ The configs are in `config.py`
   your name here
 * password
 
-  your password for the admin
+  your admin password
 * language
   
   `zh-cn` or `en-us` (default is `en-us`)
