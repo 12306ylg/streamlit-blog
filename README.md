@@ -1,6 +1,6 @@
-# This is a blog application based on Streamlit
+# A blog application based on Streamlit
 
-## Deploy
+## Run
 
 ```shell
 git clone https://github.com/12306ylg/streamlit-blog.git/
